@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación de Seguimiento de Hábitos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="seguimiento-habitos">
+        <div class="pestañas">
+            <button onclick="mostrarSeccion('seccion-agregar-habito')">Agregar Hábito</button>
+            <button onclick="mostrarSeccion('seccion-inicio')">
+                <i class="fas fa-home"></i>
+            </button>
+            <button onclick="mostrarSeccion('seccion-ver-habitos')">Ver Hábitos</button>
+        </div>
+
+        <div id="seccion-inicio" class="seccion activa">
+            <h1>¡Bienvenido a tu Seguimiento de Hábitos!</h1>
+  <p>Aquí podrás agregar hábitos y llevar un registro de tu progreso.</p>
+  <p class="frase">¡Comienza a mejorar tu vida hoy mismo!</p>
+
+  <h2>Instrucciones para usar la aplicación:</h2>
+  <div class="instrucciones-container">
+    <div class="instruccion-item">
+      <strong>1. Agregar un hábito:</strong>
+      <p>Haz clic en la sección "Agregar Hábito", ingresa el nombre de tu hábito y presiona "Agregar".</p>
+    </div>
+    <div class="instruccion-item">
+      <strong>2. Ver tus hábitos:</strong>
+      <p>Dirígete a la sección "Ver Hábitos" para visualizar todos los hábitos que has agregado y su progreso.</p>
+    </div>
+    <div class="instruccion-item">
+      <strong>3. Registrar progreso:</strong>
+      <p>Para registrar el progreso de un hábito, haz clic en el botón "Hecho" en la sección correspondiente.</p>
+    </div>
+    <div class="instruccion-item">
+      <strong>4. Eliminar un hábito:</strong>
+      <p>Si deseas eliminar un hábito, haz clic en el botón "Eliminar" junto al hábito que deseas borrar.</p>
+    </div>
+    <div class="instruccion-item">
+      <strong>5. Seguimiento diario:</strong>
+      <p>Cada vez que completes un hábito, se actualizará automáticamente el conteo y se mostrará en un gráfico.</p>
+    </div>
+  </div>
+
+  <p>¡Sigue estos pasos y mantén el control de tus hábitos para una vida más saludable y productiva!</p>
+            <button class="btn-comenzar" onclick="mostrarSeccion('seccion-agregar-habito')">¡Comienza Ahora!</button>
+        </div>
+
+        <div id="seccion-agregar-habito" class="seccion">
+            <h2>Agregar Nuevo Hábito</h2>
+            <form id="formulario-agregar-habito" onsubmit="return agregarHabito(event)">
+                <input type="text" id="nombre-habito" placeholder="Nombre del Hábito" required>
+                <label>
+                <button type="submit">Agregar Hábito</button>
+            </form>
+            <div id="mensaje-confirmacion" class="oculto">Se agregó tu hábito.</div>
+        </div>
+        <div id="seccion-ver-habitos" class="seccion">
+            <h2>Ver Hábitos y Progreso</h2>
+            <div id="progreso-habitos">
+                <div class="progreso-habito-item" data-habit-id="habito1">
+                    <h3>Hábito de Ejemplo</h3>
+                    <p id="conteo-habito1">Conteo: 0</p>
+                    <button id="registrar-habito1" onclick="registrarAccion('habito1')">Registrar Acción</button>
+                    <canvas id="grafico-habito-ejemplo"></canvas>
+                </div>
+            </div>
+        </div>
+        
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
